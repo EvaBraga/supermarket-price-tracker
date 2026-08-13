@@ -38,6 +38,9 @@ public class Produto {
 		
 	}
 	
+	public BigDecimal getMaiorPrecoProduto() {
+		return Collections.max(precos.values());
+	}
 	
 	@Override
 	public int hashCode() {
