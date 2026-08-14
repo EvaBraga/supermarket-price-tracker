@@ -1,6 +1,8 @@
-package supermarketpricetracker;
+package Comparador;
 import java.math.*;
 import java.util.Comparator;
+
+import model.Produto;
 
 public class ComparadorProduto implements Comparator<Produto> {
 
