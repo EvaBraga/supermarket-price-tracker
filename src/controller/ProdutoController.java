@@ -1,7 +1,8 @@
-package model;
+package controller;
 import java.util.*;
 
-import Comparador.ComparadorProduto;
+import comparador.ComparadorProduto;
+import model.Produto;
 import model.Produto.Categoria;
 
 public class ProdutoController {
