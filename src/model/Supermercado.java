@@ -1,4 +1,4 @@
-package supermarketpricetracker;
+package model;
 
 import java.util.*;
 

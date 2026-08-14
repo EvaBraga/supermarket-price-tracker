@@ -1,17 +1,18 @@
-package supermarketpricetracker;
+package model;
 import java.util.*;
 
-import supermarketpricetracker.Produto.Categoria;
+import Comparador.ComparadorProduto;
+import model.Produto.Categoria;
 
 public class ProdutoController {
 	private HashMap<String, Produto> produtos;
 
-	public ProdutoController(HashMap<String, Produto> produtos) {
+	public ProdutoController() {
 		super();
 		this.produtos = new HashMap<>();
 	}
 	
-	public boolean cadastrarPodruto(String id, String nome, Categoria categoria) {
+	public boolean cadastrarProduto(String id, String nome, Categoria categoria) {
 		if (produtos.containsKey(id)) {
 			return false;
 		}

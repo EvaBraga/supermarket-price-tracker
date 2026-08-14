@@ -1,11 +1,13 @@
-package supermarketpricetracker;
+package model;
 import java.util.*;
+
+import Comparador.ComparadorSupermercado;
 
 
 public class SupermercadoController {
 	private HashMap<String, Supermercado> supermercados;
 
-	public SupermercadoController(HashMap<String, Supermercado> supermercados) {
+	public SupermercadoController() {
 		super();
 		this.supermercados = new HashMap<>();
 	}
