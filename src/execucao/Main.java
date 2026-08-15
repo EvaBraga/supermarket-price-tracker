@@ -4,7 +4,6 @@ import java.util.*;
 import controller.ProdutoController;
 import controller.SupermercadoController;
 import controller.PrecoController;
-import model.*;
 import model.Produto.Categoria;
 
 public class Main {
@@ -33,6 +32,7 @@ public class Main {
 			System.out.println("\n0 - Sair");
 
 			opcao = sca.nextInt();
+			sca.nextLine();
 
 			switch (opcao) {
 			case 1:
