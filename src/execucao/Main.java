@@ -1,5 +1,6 @@
 package execucao;
-
+import java.math.*;
+import model.*;
 import java.util.*;
 import controller.ProdutoController;
 import controller.SupermercadoController;
@@ -12,7 +13,7 @@ public class Main {
 		ProdutoController pc = new ProdutoController();
 		SupermercadoController sc = new SupermercadoController();
 		Scanner sca = new Scanner(System.in);
-		PrecoController precoController = new PrecoController(sc, pc);
+		PrecoController pcl = new PrecoController(sc, pc);
 
 		int opcao;
 
@@ -35,7 +36,7 @@ public class Main {
 			sca.nextLine();
 
 			switch (opcao) {
-			case 1:
+			case 1: {
 				System.out.println("Cadastrar Produto");
 				System.out.println("ID do Produto: ");
 				String id = sca.nextLine();
@@ -44,10 +45,110 @@ public class Main {
 				System.out.println("Categoria do Produto");
 				Categoria categoria = Categoria.valueOf(sca.nextLine().toUpperCase());
 				pc.cadastrarProduto(id, nome, categoria);
+				System.out.println("Produto Cadastrado Com Sucesso!");
 
 			}
 
+			case 2: {
+				System.out.println("Buscar produto");
+				System.out.println("ID do Produto: ");
+				String id = sca.nextLine();
+				Produto produto = pc.buscarProduto(id);
+				System.out.println(produto);
+
+			}
+
+			case 3: {
+				System.out.println("Listar Produtos Por Menor Preço");
+				System.out.println(pc.listarProdutosMenorPreco());
+
+			}
+
+			case 4: {
+				System.out.println("Remover Produto");
+				System.out.println("ID do Produto: ");
+				String id = sca.nextLine();
+				pc.removerProduto(id);
+				System.out.println("Produto Removido Com Sucesso!");
+
+			}
+			
+			case 5: {
+				System.out.println("Cadastrar Supermercado");
+				System.out.println("ID do Supermercado: ");
+				String id = sca.nextLine();
+				System.out.println("Nome do Supermercado: ");
+				String nome = sca.nextLine();
+				sc.cadastrarSupermercado(id, nome);
+				System.out.println("Supermercado Cadastrado Com Sucesso!");
+				
+			}
+			
+			case 6: {
+				System.out.println("Buscar Supermercado");
+				System.out.println("ID do Supermercado: ");
+				String id = sca.nextLine();
+				System.out.println(sc.buscarSupermercado(id));
+			}
+			
+			case 7: {
+				System.out.println("Listar Supermercados");
+				System.out.println(sc.listarSupermercados());
+
+			}
+			
+			case 8: {
+				System.out.println("Remover Supermercado");
+				System.out.println("ID do Supermercado");
+				String id = sca.nextLine();
+				sc.deletarSupermercado(id);
+				System.out.println("Supermercado Removido Com Sucesso!");
+			}
+			
+			case 9: {
+				System.out.println("Registrar Preço");
+				System.out.println("ID do Produto: ");
+				String idProduto = sca.nextLine();
+				System.out.println("ID do Supermercado: ");
+				String idSupermercado = sca.nextLine();
+				System.out.println("Preço: ");
+				BigDecimal preco = sca.nextBigDecimal();
+				pcl.registrarPreco(idProduto, idSupermercado, preco);
+				System.out.println("Preço Registrado Com Sucesso!");
+			}
+			
+			case 10: {
+				System.out.println("Consultar Preço");
+				System.out.println("ID do Produto: ");
+				String idProduto = sca.nextLine();
+				System.out.println("ID do Supermercado: ");
+				String idSupermercado = sca.nextLine();
+				System.out.println(pcl.consultarPreco(idProduto, idSupermercado));
+			}
+			
+			case 11: {
+				System.out.println("Remover Preço");
+				System.out.println("ID do Produto: ");
+				String idProduto = sca.nextLine();
+				System.out.println("ID do Supermercado: ");
+				String idSupermercado = sca.nextLine();
+				pcl.removerPreco(idProduto, idSupermercado);
+				System.out.println("Preço Removido Com Sucesso!");
+			}
+			
+			case 0: {
+				System.out.println("Saindo");
+			}
+			
+			default: {
+				System.out.println("Opção Inválida");
+			}
+			
+			}
+			
+
 		} while (opcao != 0);
 		sca.close();
+
 	}
 }
