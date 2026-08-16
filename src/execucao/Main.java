@@ -46,6 +46,7 @@ public class Main {
 				Categoria categoria = Categoria.valueOf(sca.nextLine().toUpperCase());
 				pc.cadastrarProduto(id, nome, categoria);
 				System.out.println("Produto Cadastrado Com Sucesso!");
+				break;
 
 			}
 
@@ -55,13 +56,14 @@ public class Main {
 				String id = sca.nextLine();
 				Produto produto = pc.buscarProduto(id);
 				System.out.println(produto);
-
+				break;
 			}
 
 			case 3: {
 				System.out.println("Listar Produtos Por Menor Preço");
 				System.out.println(pc.listarProdutosMenorPreco());
-
+				break;
+				
 			}
 
 			case 4: {
@@ -70,7 +72,7 @@ public class Main {
 				String id = sca.nextLine();
 				pc.removerProduto(id);
 				System.out.println("Produto Removido Com Sucesso!");
-
+				break;
 			}
 			
 			case 5: {
@@ -81,6 +83,7 @@ public class Main {
 				String nome = sca.nextLine();
 				sc.cadastrarSupermercado(id, nome);
 				System.out.println("Supermercado Cadastrado Com Sucesso!");
+				break;
 				
 			}
 			
@@ -89,12 +92,15 @@ public class Main {
 				System.out.println("ID do Supermercado: ");
 				String id = sca.nextLine();
 				System.out.println(sc.buscarSupermercado(id));
+				break;
+				
 			}
 			
 			case 7: {
 				System.out.println("Listar Supermercados");
 				System.out.println(sc.listarSupermercados());
-
+				break;
+				
 			}
 			
 			case 8: {
@@ -103,6 +109,7 @@ public class Main {
 				String id = sca.nextLine();
 				sc.deletarSupermercado(id);
 				System.out.println("Supermercado Removido Com Sucesso!");
+				break;
 			}
 			
 			case 9: {
@@ -113,8 +120,11 @@ public class Main {
 				String idSupermercado = sca.nextLine();
 				System.out.println("Preço: ");
 				BigDecimal preco = sca.nextBigDecimal();
+				sca.nextLine();
 				pcl.registrarPreco(idProduto, idSupermercado, preco);
 				System.out.println("Preço Registrado Com Sucesso!");
+				break;
+				
 			}
 			
 			case 10: {
@@ -124,6 +134,7 @@ public class Main {
 				System.out.println("ID do Supermercado: ");
 				String idSupermercado = sca.nextLine();
 				System.out.println(pcl.consultarPreco(idProduto, idSupermercado));
+				break;
 			}
 			
 			case 11: {
@@ -134,14 +145,18 @@ public class Main {
 				String idSupermercado = sca.nextLine();
 				pcl.removerPreco(idProduto, idSupermercado);
 				System.out.println("Preço Removido Com Sucesso!");
+				break;
 			}
 			
 			case 0: {
 				System.out.println("Saindo");
+				break;
 			}
 			
 			default: {
 				System.out.println("Opção Inválida");
+				break;
+				
 			}
 			
 			}
