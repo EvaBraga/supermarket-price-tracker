@@ -45,11 +45,19 @@ public class Produto {
 	}
 
 	public BigDecimal consultarPreco(Supermercado sp) {
+		if (precos.get(sp) == null) {
+			throw new IllegalArgumentException("Preço Inexistente");
+		}
 		return precos.get(sp);
+		
 	}
 
-	public void removerPreco(Supermercado sp) {
+	public String removerPreco(Supermercado sp) {
+		if (precos.get(sp) == null) {
+			throw new IllegalArgumentException("Preço inexistente");
+		}
 		precos.remove(sp);
+		return "Preço removido com sucesso.";
 	}
 
 	public String getId() {
