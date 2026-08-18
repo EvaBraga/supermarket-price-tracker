@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.*;
 
 import comparador.ComparadorProduto;
@@ -12,7 +13,7 @@ public class ProdutoController {
 		super();
 		this.produtos = new HashMap<>();
 	}
-	
+
 	public boolean cadastrarProduto(String id, String nome, Categoria categoria) {
 		if (produtos.containsKey(id)) {
 			return false;
@@ -20,14 +21,14 @@ public class ProdutoController {
 		produtos.put(id, new Produto(id, nome, categoria));
 		return true;
 	}
-	
+
 	public Produto buscarProduto(String id) {
 		if (!produtos.containsKey(id)) {
 			throw new IllegalArgumentException("Produto não encontrado.");
 		}
 		return produtos.get(id);
 	}
-	
+
 	public String[] listarProdutosMenorPreco() {
 		List<Produto> prod = new ArrayList<>(produtos.values());
 		Collections.sort(prod, new ComparadorProduto());
@@ -39,10 +40,17 @@ public class ProdutoController {
 		}
 		return out;
 	}
-	
+
 	public void removerProduto(String id) {
-		produtos.remove(id);
+	    if (!produtos.containsKey(id)) {
+	        throw new IllegalArgumentException("Produto não encontrado.");
+	    }
+
+	    produtos.remove(id);
 	}
 	
-	
+	public HashMap<String, Produto> getProdutos() {
+		return produtos;
+	}
+
 }

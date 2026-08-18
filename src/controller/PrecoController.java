@@ -7,49 +7,49 @@ import model.Supermercado;
 
 public class PrecoController {
 
-    private SupermercadoController sc;
-    private ProdutoController pc;
+	private SupermercadoController sc;
+	private ProdutoController pc;
 
-    public PrecoController(SupermercadoController sc, ProdutoController pc) {
-        this.sc = sc;
-        this.pc = pc;
-    }
+	public PrecoController(SupermercadoController sc, ProdutoController pc) {
+		this.sc = sc;
+		this.pc = pc;
+	}
 
-    public void registrarPreco(String idProduto,String idSupermercado,BigDecimal preco) {
+	public void registrarPreco(String idProduto, String idSupermercado, BigDecimal preco) {
 
-        Produto p = pc.buscarProduto(idProduto);
-        Supermercado s = sc.buscarSupermercado(idSupermercado);
+		Produto p = pc.buscarProduto(idProduto);
+		Supermercado s = sc.buscarSupermercado(idSupermercado);
 
-        p.registrarPreco(s, preco);
-    }
+		p.registrarPreco(s, preco);
+	}
 
-    public BigDecimal consultarPreco(String idProduto,String idSupermercado) {
+	public BigDecimal consultarPreco(String idProduto, String idSupermercado) {
 
-        Produto p = pc.buscarProduto(idProduto);
-        Supermercado s = sc.buscarSupermercado(idSupermercado);
+		Produto p = pc.buscarProduto(idProduto);
+		Supermercado s = sc.buscarSupermercado(idSupermercado);
 
-        return p.consultarPreco(s);
-    }
+		return p.consultarPreco(s);
+	}
 
-    public void removerPreco(String idProduto, String idSupermercado) {
+	public void removerPreco(String idProduto, String idSupermercado) {
 
-        Produto p = pc.buscarProduto(idProduto);
-        Supermercado s = sc.buscarSupermercado(idSupermercado);
+		Produto p = pc.buscarProduto(idProduto);
+		Supermercado s = sc.buscarSupermercado(idSupermercado);
 
-        p.removerPreco(s);
-    }
+		p.removerPreco(s);
+	}
 
-    public BigDecimal pegaMenorPreco(String idProduto) {
+	public BigDecimal pegaMenorPreco(String idProduto) {
 
-        Produto p = pc.buscarProduto(idProduto);
+		Produto p = pc.buscarProduto(idProduto);
 
-        return p.getMenorPrecoProduto();
-    }
-    
-    public BigDecimal pegaMaiorPreco(String idProduto) {
+		return p.getMenorPrecoProduto();
+	}
 
-        Produto p = pc.buscarProduto(idProduto);
+	public BigDecimal pegaMaiorPreco(String idProduto) {
 
-        return p.getMaiorPrecoProduto();
-    }
+		Produto p = pc.buscarProduto(idProduto);
+
+		return p.getMaiorPrecoProduto();
+	}
 }
