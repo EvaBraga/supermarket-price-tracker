@@ -24,7 +24,6 @@ public class ProdutoTest {
                 "Atacadão"
         );
     }
-
     @Test
     void criaProdutoIdValido() {
         assertEquals("P001", produto.getId());
