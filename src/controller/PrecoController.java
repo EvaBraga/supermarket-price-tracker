@@ -32,11 +32,14 @@ public class PrecoController {
 	}
 
 	public void removerPreco(String idProduto, String idSupermercado) {
+	    Produto p = pc.buscarProduto(idProduto);
+	    Supermercado s = sc.buscarSupermercado(idSupermercado);
 
-		Produto p = pc.buscarProduto(idProduto);
-		Supermercado s = sc.buscarSupermercado(idSupermercado);
+	    if (!p.getPrecos().containsKey(s)) {
+	        throw new IllegalArgumentException("Preço Inexistente");
+	    }
 
-		p.removerPreco(s);
+	    p.removerPreco(s);
 	}
 
 	public BigDecimal pegaMenorPreco(String idProduto) {
