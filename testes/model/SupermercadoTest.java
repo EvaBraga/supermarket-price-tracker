@@ -1,4 +1,4 @@
-package test;
+package model;
 import java.math.*;
 import model.Produto;
 import org.junit.jupiter.api.*;

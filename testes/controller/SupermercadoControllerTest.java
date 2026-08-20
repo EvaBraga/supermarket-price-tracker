@@ -1,4 +1,4 @@
-package test;
+package controller;
 
 import model.Supermercado;
 import controller.SupermercadoController;
