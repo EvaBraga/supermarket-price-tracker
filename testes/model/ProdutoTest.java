@@ -28,10 +28,42 @@ public class ProdutoTest {
     void criaProdutoIdValido() {
         assertEquals("P001", produto.getId());
     }
+    @Test
+    void criaProdutoIdNulo() {
+    	try {
+    		Produto p = new Produto(null, "Feijão", Categoria.GRAOS);
+    	} catch (NullPointerException iae) {
+    		assertEquals("ID não pode ser nulo",iae.getMessage());
+    	}
+    }
+    @Test
+    void criaProdutoIdVazio() {
+    	try {
+    		Produto p = new Produto("  ", "Feijão", Categoria.GRAOS);
+    	} catch (IllegalArgumentException iae) {
+    		assertEquals("ID inválido",iae.getMessage());
+    	}
+    }
 
     @Test
     void criaProdutoNomeValido() {
         assertEquals("Arroz", produto.getNome());
+    }
+    @Test
+    void criaProdutoNomeNulo() {
+    	try {
+    		Produto p = new Produto("P002", null, Categoria.GRAOS);
+    	} catch (NullPointerException iae) {
+    		assertEquals("Nome não pode ser nulo",iae.getMessage());
+    	}
+    }
+    @Test
+    void criaProdutoNomeVazio() {
+    	try {
+    		Produto p = new Produto("P002", "   ", Categoria.GRAOS);
+    	} catch (IllegalArgumentException iae) {
+    		assertEquals("Nome inválido",iae.getMessage());
+    	}
     }
 
     @Test

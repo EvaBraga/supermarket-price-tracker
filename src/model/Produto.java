@@ -11,6 +11,10 @@ public class Produto {
 
 	public Produto(String id, String nome, Categoria categoria) {
 		super();
+		
+		validaId(id);
+		validaNome(nome);
+		
 		this.id = id;
 		this.nome = nome;
 		this.precos = new HashMap<>();
@@ -19,7 +23,6 @@ public class Produto {
 
 	public enum Categoria {
 		FRUTAS, FRIOS, CARNES, LATICINIOS, GRAOS, BEBIDAS
-
 	}
 
 	public BigDecimal getMenorPrecoProduto() {
@@ -92,7 +95,38 @@ public class Produto {
 		Produto other = (Produto) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	/**
+	 * Valida o nome do Produto, lança uma excessão caso o nome seja nulo ou vazio
+	 * @param nome o nome do Produto
+	 */
+	public static void validaNome(String nome) {
+		if(nome == null) {
+			throw new NullPointerException("Nome não pode ser nulo");
+		}
+		if(nome.trim().isEmpty()) {
+			throw new IllegalArgumentException("Nome inválido");
+		}
+	}
 	
+	/**
+	 * Valida o ID do Produto, lança uma excessão caso o ID seja nulo ou vazio
+	 * @param nome o ID do Produto
+	 */
+	public static void validaId(String id) {
+		if(id == null) {
+			throw new NullPointerException("ID não pode ser nulo");
+		}
+		if(id.trim().isEmpty()) {
+			throw new IllegalArgumentException("ID inválido");
+		}
+		//CASO QUEIRA QUE O ID SEJA COMPOSTO SÓ POR NÚMEROS
+//		for(int i = 0; i < id.length(); i++) {
+//			if(!Character.isDigit(id.charAt(i))) {
+//				throw new IllegalArgumentException("ID deve ser composto apenas de números");
+//			}
+//		}
+	}
 	
 
 }
