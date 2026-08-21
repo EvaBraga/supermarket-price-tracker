@@ -1,7 +1,10 @@
 package model;
 
 import java.util.*;
+
+
 import java.math.BigDecimal;
+import java.text.Normalizer;
 
 public class Produto {
 	private String id;
@@ -9,7 +12,7 @@ public class Produto {
 	private HashMap<Supermercado, BigDecimal> precos;
 	public Categoria categoria;
 
-	public Produto(String id, String nome, Categoria categoria) {
+	public Produto(String id, String nome, String categoria) {
 		super();
 		
 		validaId(id);
@@ -18,11 +21,7 @@ public class Produto {
 		this.id = id;
 		this.nome = nome;
 		this.precos = new HashMap<>();
-		this.categoria = categoria;
-	}
-
-	public enum Categoria {
-		FRUTAS, FRIOS, CARNES, LATICINIOS, GRAOS, BEBIDAS
+		this.categoria = validaCategoria(categoria);
 	}
 
 	public BigDecimal getMenorPrecoProduto() {
@@ -128,5 +127,25 @@ public class Produto {
 //		}
 	}
 	
+	public static Categoria validaCategoria(String categoria) {
+		if(categoria == null) {
+			throw new NullPointerException("Categoria não pode ser nula");
+		}
+		if(categoria.trim().isEmpty()) {
+			throw new IllegalArgumentException("Categoria não pode ser vazia");
+		}
+		
+		String categoriaTratada = Normalizer
+				.normalize(categoria, Normalizer.Form.NFD)
+				.replaceAll("[^\\p{ASCII}]", "")
+				.trim()
+				.toUpperCase();
+		
+		try {
+			return Categoria.valueOf(categoriaTratada);
+		} catch(IllegalArgumentException iae){
+			throw new IllegalArgumentException("Tipo de categoria inválida");
+		}
+	}
 
 }

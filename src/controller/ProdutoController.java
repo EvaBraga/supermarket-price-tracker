@@ -4,7 +4,6 @@ import java.util.*;
 
 import comparador.ComparadorProduto;
 import model.Produto;
-import model.Produto.Categoria;
 
 public class ProdutoController {
 	private HashMap<String, Produto> produtos;
@@ -14,7 +13,7 @@ public class ProdutoController {
 		this.produtos = new HashMap<>();
 	}
 
-	public boolean cadastrarProduto(String id, String nome, Categoria categoria) {
+	public boolean cadastrarProduto(String id, String nome, String categoria) {
 		if (produtos.containsKey(id)) {
 			return false;
 		}

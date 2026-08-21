@@ -7,7 +7,6 @@ import java.util.List;
 
 import comparador.ComparadorProduto;
 import model.Produto;
-import model.Produto.Categoria;
 import model.Supermercado;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,8 +24,8 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void produto1MaisBaratoQueProduto2() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("5.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("10.00"));
@@ -36,8 +35,8 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void produto1MaisCaroQueProduto2() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz","GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("10.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("5.00"));
@@ -47,8 +46,8 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void produtosComMesmoPreco() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("10.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("10.00"));
@@ -58,8 +57,8 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void ordenacaoDeDoisProdutos() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("10.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("5.00"));
@@ -76,9 +75,9 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void ordenacaoDeVariosProdutos() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
-		Produto p3 = new Produto("P003", "Macarrão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
+		Produto p3 = new Produto("P003", "Macarrão", "GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("12.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("5.00"));
@@ -98,9 +97,9 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void listaJaOrdenada() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
-		Produto p3 = new Produto("P003", "Macarrão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
+		Produto p3 = new Produto("P003", "Macarrão", "GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("5.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("8.00"));
@@ -120,9 +119,9 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void listaEmOrdemInversa() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
-		Produto p3 = new Produto("P003", "Macarrão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
+		Produto p3 = new Produto("P003", "Macarrão","GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("5.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("8.00"));
@@ -142,9 +141,9 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void listaComPrecosIguais() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
-		Produto p3 = new Produto("P003", "Macarrão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
+		Produto p3 = new Produto("P003", "Macarrão", "GRAOS");
 
 		p1.registrarPreco(supermercado, new BigDecimal("10.00"));
 		p2.registrarPreco(supermercado, new BigDecimal("10.00"));
@@ -157,7 +156,7 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void produtoSemPreco() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
 
 		try {
 			comparador.compare(p1, p1);
@@ -168,8 +167,8 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void umProdutoSemPrecoEOutroComPreco() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
 
 		p2.registrarPreco(supermercado, new BigDecimal("10.00"));
 
@@ -182,8 +181,8 @@ public class ComparadorProdutoTest {
 
 	@Test
 	void ambosProdutosSemPreco() {
-		Produto p1 = new Produto("P001", "Arroz", Categoria.GRAOS);
-		Produto p2 = new Produto("P002", "Feijão", Categoria.GRAOS);
+		Produto p1 = new Produto("P001", "Arroz", "GRAOS");
+		Produto p2 = new Produto("P002", "Feijão", "GRAOS");
 
 		try {
 			comparador.compare(p1, p2);

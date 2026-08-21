@@ -7,7 +7,6 @@ import controller.ProdutoController;
 import controller.SupermercadoController;
 import model.Produto;
 import model.Supermercado;
-import model.Produto.Categoria;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
@@ -25,7 +24,7 @@ public class PrecoControllerTest {
 		sc = new SupermercadoController();
 		pcl = new PrecoController(sc, pc);
 
-		pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
+		pc.cadastrarProduto("P001", "Arroz", "GRAOS");
 		sc.cadastrarSupermercado("SP001", "Atacadão");
 
 		produto = pc.buscarProduto("P001");

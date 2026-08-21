@@ -6,7 +6,6 @@ import model.Supermercado;
 import controller.ProdutoController;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
-import model.Produto.Categoria;
 
 public class ProdutoControllerTest {
 	private ProdutoController pc;
@@ -15,41 +14,41 @@ public class ProdutoControllerTest {
 	@BeforeEach
 	void setUp() {
 		pc = new ProdutoController();
-		p = new Produto("P001", "Suco", Categoria.BEBIDAS);
+		p = new Produto("P001", "Suco", "bebidas");
 	}
 
 	@Test
 	void cadastraProdutoOK() {
-		Boolean cadastro = pc.cadastrarProduto("P001", "Feijão", Categoria.GRAOS);
+		Boolean cadastro = pc.cadastrarProduto("P001", "Feijão", "grãos");
 		assertTrue(cadastro);
 	}
 
 	@Test
 	void cadastrarDoisProdutosDiferentes() {
-		Boolean cadastro = pc.cadastrarProduto("P001", "Feijão", Categoria.GRAOS);
+		Boolean cadastro = pc.cadastrarProduto("P001", "Feijão", "grãos");
 		assertTrue(cadastro);
 
-		Boolean cadastro2 = pc.cadastrarProduto("P002", "Maçã", Categoria.FRUTAS);
+		Boolean cadastro2 = pc.cadastrarProduto("P002", "Maçã", "frutas");
 		assertTrue(cadastro2);
 	}
 
 	@Test
 	void cadastrarProdutoIdExistente() {
-		pc.cadastrarProduto("P001", "Feijão", Categoria.GRAOS);
-		Boolean cadastro2 = pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
+		pc.cadastrarProduto("P001", "Feijão", "grãos");
+		Boolean cadastro2 = pc.cadastrarProduto("P001", "Arroz", "grãos");
 		assertFalse(cadastro2);
 	}
 
 	@Test
 	void verificaSeProdutoCadastradoFoiArmazenado() {
-		pc.cadastrarProduto("P001", "Feijão", Categoria.GRAOS);
+		pc.cadastrarProduto("P001", "Feijão", "grãos");
 		int tamanho = pc.getProdutos().size();
 		assertEquals(1, tamanho);
 	}
 
 	@Test
 	void buscarProduto() {
-		pc.cadastrarProduto(p.getId(), p.getNome(), p.getCategoria());
+		pc.cadastrarProduto(p.getId(), p.getNome(), p.getCategoria().toString());
 		assertEquals(p, pc.buscarProduto(p.getId()));
 	}
 
@@ -64,7 +63,7 @@ public class ProdutoControllerTest {
 
 	@Test
 	void buscarUsandoIdValido() {
-		pc.cadastrarProduto("P001", "Suco", Categoria.BEBIDAS);
+		pc.cadastrarProduto("P001", "Suco", "bebidas");
 		assertEquals("P001", pc.buscarProduto("P001").getId());
 	}
 
@@ -79,14 +78,14 @@ public class ProdutoControllerTest {
 
 	@Test
 	void buscarDepoisDeCadastrar() {
-		pc.cadastrarProduto("P001", "Suco", Categoria.BEBIDAS);
+		pc.cadastrarProduto("P001", "Suco", "bebidas");
 		assertEquals("Suco", pc.buscarProduto("P001").getNome());
 	}
 
 	@Test
 	void listarProdutosQuandoExistemProdutos() {
-		pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
-		pc.cadastrarProduto("P002", "Maçã", Categoria.FRUTAS);
+		pc.cadastrarProduto("P001", "Arroz", "grãos");
+		pc.cadastrarProduto("P002", "Maçã", "frutas");
 
 		Supermercado sp = new Supermercado("SP001", "Atacadão");
 
@@ -103,9 +102,9 @@ public class ProdutoControllerTest {
 
 	@Test
 	void listarVariosProdutos() {
-		pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
-		pc.cadastrarProduto("P002", "Feijão", Categoria.GRAOS);
-		pc.cadastrarProduto("P003", "Maçã", Categoria.FRUTAS);
+		pc.cadastrarProduto("P001", "Arroz", "grãos");
+		pc.cadastrarProduto("P002", "Feijão", "grãos");
+		pc.cadastrarProduto("P003", "Maçã", "frutas");
 
 		Supermercado sp = new Supermercado("SP001", "Atacadão");
 
@@ -118,8 +117,8 @@ public class ProdutoControllerTest {
 
 	@Test
 	void verificaOrdenacaoPorMenorPreco() {
-		pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
-		pc.cadastrarProduto("P002", "Feijão", Categoria.GRAOS);
+		pc.cadastrarProduto("P001", "Arroz", "grãos");
+		pc.cadastrarProduto("P002", "Feijão", "grãos");
 
 		Supermercado sp = new Supermercado("SP001", "Atacadão");
 
@@ -134,7 +133,7 @@ public class ProdutoControllerTest {
 
 	@Test
 	void removerProdutoExistente() {
-		pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
+		pc.cadastrarProduto("P001", "Arroz", "grãos");
 		pc.removerProduto("P001");
 
 		assertEquals(0, pc.getProdutos().size());
@@ -151,7 +150,7 @@ public class ProdutoControllerTest {
 
 	@Test
 	void produtoRemovidoNaoPodeSerEncontrado() {
-		pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
+		pc.cadastrarProduto("P001", "Arroz", "grãos");
 		pc.removerProduto("P001");
 
 		try {
@@ -163,10 +162,10 @@ public class ProdutoControllerTest {
 
 	@Test
 	void cadastrarNovamenteIdDepoisDaRemocao() {
-		pc.cadastrarProduto("P001", "Arroz", Categoria.GRAOS);
+		pc.cadastrarProduto("P001", "Arroz", "grãos");
 		pc.removerProduto("P001");
 
-		Boolean cadastro = pc.cadastrarProduto("P001", "Feijão", Categoria.GRAOS);
+		Boolean cadastro = pc.cadastrarProduto("P001", "Feijão", "grãos");
 
 		assertTrue(cadastro);
 		assertEquals("Feijão", pc.buscarProduto("P001").getNome());

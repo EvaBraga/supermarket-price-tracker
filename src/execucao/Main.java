@@ -5,7 +5,6 @@ import java.util.*;
 import controller.ProdutoController;
 import controller.SupermercadoController;
 import controller.PrecoController;
-import model.Produto.Categoria;
 
 public class Main {
 	public static void main(String[] args) {
@@ -30,7 +29,7 @@ public class Main {
 			System.out.println("\n9 Registrar Preço ");
 			System.out.println("10 - Consultar Preço");
 			System.out.println("11 - Remover Preço");
-			System.out.println("\n0 - Sair");
+			System.out.println("\n0 - Sair"); 
 
 			opcao = sca.nextInt();
 			sca.nextLine();
@@ -43,7 +42,7 @@ public class Main {
 				System.out.println("Nome do Produto: ");
 				String nome = sca.nextLine();
 				System.out.println("Categoria do Produto");
-				Categoria categoria = Categoria.valueOf(sca.nextLine().toUpperCase());
+				String categoria = sca.nextLine();
 				pc.cadastrarProduto(id, nome, categoria);
 				System.out.println("Produto Cadastrado Com Sucesso!");
 				break;

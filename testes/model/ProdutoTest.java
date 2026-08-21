@@ -4,8 +4,6 @@ import model.Produto;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import model.Supermercado;
-import model.Produto.Categoria;
-
 
 public class ProdutoTest {
 	private Produto produto;
@@ -16,7 +14,7 @@ public class ProdutoTest {
         produto = new Produto(
                 "P001",
                 "Arroz",
-                Categoria.GRAOS
+                "GRAOS"
         );
 
         supermercado = new Supermercado(
@@ -31,7 +29,7 @@ public class ProdutoTest {
     @Test
     void criaProdutoIdNulo() {
     	try {
-    		Produto p = new Produto(null, "Feijão", Categoria.GRAOS);
+    		Produto p = new Produto(null, "Feijão", "GRAOS");
     	} catch (NullPointerException iae) {
     		assertEquals("ID não pode ser nulo",iae.getMessage());
     	}
@@ -39,7 +37,7 @@ public class ProdutoTest {
     @Test
     void criaProdutoIdVazio() {
     	try {
-    		Produto p = new Produto("  ", "Feijão", Categoria.GRAOS);
+    		Produto p = new Produto("  ", "Feijão", "GRAOS");
     	} catch (IllegalArgumentException iae) {
     		assertEquals("ID inválido",iae.getMessage());
     	}
@@ -52,7 +50,7 @@ public class ProdutoTest {
     @Test
     void criaProdutoNomeNulo() {
     	try {
-    		Produto p = new Produto("P002", null, Categoria.GRAOS);
+    		Produto p = new Produto("P002", null, "GRAOS");
     	} catch (NullPointerException iae) {
     		assertEquals("Nome não pode ser nulo",iae.getMessage());
     	}
@@ -60,7 +58,7 @@ public class ProdutoTest {
     @Test
     void criaProdutoNomeVazio() {
     	try {
-    		Produto p = new Produto("P002", "   ", Categoria.GRAOS);
+    		Produto p = new Produto("P002", "   ","GRAOS");
     	} catch (IllegalArgumentException iae) {
     		assertEquals("Nome inválido",iae.getMessage());
     	}
